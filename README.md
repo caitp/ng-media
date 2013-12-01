@@ -9,9 +9,12 @@ ng-media provides a simple, declarative means for using HTML5 audio and video el
 A simple example:
 
 ```html
-<div data-html5-video="movies/easterbunny.mp4" track="captions/easterbunny.vtt" controls="true">
+<div data-html5-video="movies/easterbunny.mp4"
+     track="captions/easterbunny.vtt"
+     controls="true">
   <p class="bordered-text">
-    HTML, including custom video controls, can be overlayed easily over the video frame.
+    HTML, including custom video controls, can be overlayed easily over the
+    video frame.
   </p>
 </div>
 ```
@@ -38,10 +41,13 @@ $scope.videoTracks = {
     <button ng-click="video.$play()">Play Button</button>
     <button ng-click="video.$pause()">Pause Button</button>
     <!-- Volume controls -->
-    <input type="range" min="0" max="1" step="0.05" ng-model="vol" ng-change="video.$volume(vol)" />
+    <input ng-init="vol=1" type="range" min="0" max="1" step="0.05"
+           ng-model="vol" ng-change="video.$volume(vol)" />
   </div>
 </script>
-<div data-html5-video="videoSources" track="videoTracks" controls-url="customControls.tpl"></div>
+<div data-html5-video="videoSources"
+     track="videoTracks"
+     controls-url="customControls.tpl"></div>
 ```
 
 **coming soon**
