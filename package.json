@@ -1,0 +1,55 @@
+{
+  "name": "ng-media",
+  "version": "0.1.0",
+  "description": "AngularJS support for HTML5 media elements",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/caitp/ng-media.git"
+  },
+  "keywords": [
+    "AngularJS",
+    "Front-end",
+    "UI",
+    "UX",
+    "Framework",
+    "Design",
+    "Web Components",
+    "Media",
+    "Video",
+    "Audio",
+    "VP8",
+    "H264"
+  ],
+  "author": "Caitlin Potter",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/caitp/ng-media/issues"
+  },
+  "homepage": "https://github.com/caitp/ng-media",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-jshint": "~0.7.2",
+    "bower": "~1.2.7",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-parallel": "~0.3.1",
+    "grunt-contrib-connect": "~0.5.0",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-gh-pages": "~0.9.0",
+    "marked": "~0.2.10",
+    "karma-script-launcher": "~0.1.0",
+    "karma-chrome-launcher": "~0.1.1",
+    "karma-html2js-preprocessor": "~0.1.0",
+    "karma-firefox-launcher": "~0.1.2",
+    "karma-jasmine": "~0.1.3",
+    "karma-coffee-preprocessor": "~0.1.1",
+    "requirejs": "~2.1.9",
+    "karma-requirejs": "~0.2.0",
+    "karma-phantomjs-launcher": "~0.1.1",
+    "karma": "~0.10.6",
+    "grunt-karma": "~0.6.2"
+  }
+}

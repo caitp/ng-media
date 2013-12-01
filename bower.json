@@ -1,0 +1,39 @@
+{
+  "name": "ng-media",
+  "version": "0.1.0",
+  "authors": [
+    "Caitlin Potter <snowball@defpixel.com>"
+  ],
+  "description": "AngularJS support for HTML5 media elements",
+  "keywords": [
+    "AngularJS",
+    "Front-end",
+    "UI",
+    "UX",
+    "Framework",
+    "Design",
+    "Web Components",
+    "Media",
+    "Video",
+    "Audio",
+    "VP8",
+    "H264"
+  ],
+  "license": "MIT",
+  "homepage": "http://caitp.github.io/ng-ink",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "Ink": "~2.2.1",
+    "angular": "~1.2.1",
+    "angular-ui-router": "~0.2.0",
+    "underscore.string": "~2.3.3",
+    "angular-mocks": "~1.2.3",
+    "jquery": "~2.0.3"
+  }
+}
