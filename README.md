@@ -2,8 +2,6 @@
 
 ###[AngularJS](http://angularjs.org/) support for HTML5 media elements
 
-**coming soon**
-
 ng-media provides a simple, declarative means for using HTML5 audio and video elements.
 
 A simple example:
