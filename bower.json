@@ -29,11 +29,8 @@
     "tests"
   ],
   "dependencies": {
-    "Ink": "~2.2.1",
     "angular": "~1.2.1",
-    "angular-ui-router": "~0.2.0",
-    "underscore.string": "~2.3.3",
     "angular-mocks": "~1.2.3",
-    "jquery": "~2.0.3"
+    "angular-ui-router": "~0.2.0"
   }
 }
