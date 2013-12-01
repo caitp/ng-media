@@ -1,4 +1,4 @@
-##[ng-media]
+##ng-media
 
 ###[AngularJS](http://angularjs.org/) support for HTML5 media elements
 
@@ -6,17 +6,57 @@
 
 ng-media provides a simple, declarative means for using HTML5 audio and video elements.
 
-Things to expect in the near future:
+A simple example:
 
-- Video overlays
-- Custom controls
-- data-bound posters
-- Evaluate expressions in response to media events
+```html
+<div data-html5-video="movies/easterbunny.mp4" track="captions/easterbunny.vtt" controls="true">
+  <p class="bordered-text">
+    HTML, including custom video controls, can be overlayed easily over the video frame.
+  </p>
+</div>
+```
 
-Things which would be very cool that I would like to provide:
+More advanced features are also possible:
 
-- WebVTT / TTML tracks for Video elements
+```js
+$scope.videoSources = [{
+  src: "media/farmville.webm",
+  type: "video/webm",
+  media: "screen"
+}, 'media/farmville.mp4'];
+
+$scope.videoTracks = {
+  src: "captions/moocow.vtt",
+  kind: "captions",
+  type: "text/vtt"
+};
+```
+
+```html
+<script type="text/ng-template" id="customControls.tpl">
+  <div class="custom-controls">
+    <button ng-click="video.$play()">Play Button</button>
+    <button ng-click="video.$pause()">Pause Button</button>
+    <!-- Volume controls -->
+    <input type="range" min="0" max="1" step="0.05" ng-model="vol" ng-change="video.$volume(vol)" />
+  </div>
+</script>
+<div data-html5-video="videoSources" track="videoTracks" controls-url="customControls.tpl"></div>
+```
+
+**coming soon**
+
+- Register handlers for media events
+- Improved video controller API
+- Integrated support for playlists
+- Audio directive
+- Live demo
+- ngdocs page
+
+**hopefully some day**
+
 - DSP effects (one can dream!)
+- WebRTC support
 
 ###Contributing
 
