@@ -230,30 +230,47 @@ var html5VideoController = [
 }];
 
 //@directive html5Video
-var html5Video = ['$controller', function($controller) {
+var html5Video = ['$controller', '$interpolate', '$compile', '$http', '$templateCache',
+function($controller, $interpolate, $compile, $http, $templateCache) {
   return {
     restrict: "A",
     transclude: true,
     template: '<div class="html5-video"></div>',
     replace: true,
-    link: function($scope, $element, $attr, undefined, $transclude) {
-      var video = document.createElement('video');
-      var $overlay = angular.element('<div class="html5-video-overlay"></div>');
-      $element.append(video);
-      $element.append($overlay);
+    compile: function(element, attr) {
+      var overlayUrl = attr.overlayUrl;
+      return function($scope, $element, $attr, undefined, $transclude) {
+        var video = document.createElement('video');
+        var attrOverlay;
+        var $overlay = angular.element('<div class="html5-video-overlay"></div>');
+        $element.append(video);
+        if (overlayUrl) {
+          $http.get($interpolate(overlayUrl, false)($scope), { cache: $templateCache })
+            .success(function(tpl) {
+              $overlay.html(tpl);
+              $compile($overlay)($scope, function(node) {
+                $element.append(node);
+              });
+            });
+          attrOverlay = true;
+        }
 
-      $element.data('$html5VideoController', $controller('html5VideoController', {
-        $scope: $scope,
-        $attr: $attr,
-        directiveName: 'html5Video',
-        element: $element[0],
-        video: video,
-        overlay: $overlay[0]
-      }));
+        $element.data('$html5VideoController', $controller('html5VideoController', {
+          $scope: $scope,
+          $attr: $attr,
+          directiveName: 'html5Video',
+          element: $element[0],
+          video: video,
+          overlay: $overlay[0]
+        }));
 
-      $transclude($scope, function(dom) {
-        $overlay.append(dom);
-      });
+        if (!attrOverlay) {
+          $element.append($overlay);
+          $transclude($scope, function(dom) {
+            $overlay.append(dom);
+          });
+        }
+      }
     }
   };
 }];

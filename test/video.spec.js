@@ -240,5 +240,17 @@ describe('html5Video', function() {
       expect(element.find('track').length).toEqual(1);
       expect(element.find('track').prop('src')).toMatch(/test2\.vtt$/);
     }));
+
+
+    describe('overlayUrl', function() {
+      it('should replace inline overlay with template', inject(function($compile, $rootScope, $templateCache) {
+        $templateCache.put('overlay.html', '<p>This is overlay from template</p>');
+        element = $compile('<div data-html5-video data-overlay-url="overlay.html"><span>derp</span></div>')($rootScope);
+        $rootScope.$digest();
+        expect(element.find('span').length).toBe(0);
+        expect(element.find('p').length).toBe(1);
+        expect(element.find('p').text()).toBe('This is overlay from template');
+      }));
+    });
   });
 });
