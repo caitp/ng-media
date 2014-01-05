@@ -316,9 +316,9 @@ pre.code {
 }
 
 .shadow {
-  -webkit-text-shadow: 3px 3px 0 #0;
-  -moz-text-shadow: 3px 3px 0 #0;
-  -o-text-shadow: 3px 3px 0 #0;
-  -ms-text-shadow: 3px 3px 0 #0;
-  text-shadow: 3px 3px 0 #0;
+  -webkit-text-shadow: 0px 0px 8px rgba(0, 0, 0, 1);
+  -moz-text-shadow: 0px 0px 8px rgba(0, 0, 0, 1);
+  -o-text-shadow: 0px 0px 8px rgba(0, 0, 0, 1);
+  -ms-text-shadow: 0px 0px 8px rgba(0, 0, 0, 1);
+  text-shadow: 0px 0px 8px rgba(0, 0, 0, 1);
 }
