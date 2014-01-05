@@ -102,12 +102,14 @@ app
 
         function nav(next) {
           deltaY = 0;
-          if (self.$selectRoute(next.$route())) {
-            $scope.$apply(function() {
-              $location.path(current.$route());
-            });
-            unbind();
-            setTimeout(bind, 500);
+          if (next) {
+            if (self.$selectRoute(next.$route())) {
+              $scope.$apply(function() {
+                $location.path(current.$route());
+              });
+              unbind();
+              setTimeout(bind, 500);
+            }
           }
         }
 
