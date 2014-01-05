@@ -1,0 +1,63 @@
+<h2>html5-video overlay</h2>
+
+<p>The html5-video directive provides a simple mechanism for HTML overlays</p>
+
+<p>This example shows a simple use of the directive with an inline HTML overlay.</p>
+<p>The overlay may contain AngularJS forms which live within the same application,
+   as no iframe is used.</p>
+
+<div data-switcher="example|code|info" ng-model="mode"></div>
+<div class="slide-wrapper">
+  <div add-class="slide" ng-show="mode==='example'">
+    <div class="html5-video-wrapper">
+      <video data-html5-video="['http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4',
+                                'http://clips.vorwaerts-gmbh.de/big_buck_bunny.webm',
+                                'http://clips.vorwaerts-gmbh.de/big_buck_bunny.ogv']"
+             data-track="{
+               src: 'assets/captions/bunny-en.vtt',
+               type: 'text/vtt',
+               kind: 'subtitles',
+               srclang: 'en-US',
+               label: 'Subtitles'
+             }"
+             data-controls="true"
+             data-width="640"
+             data-height="360">
+        <p class="shadow">It's super easy to overlay HTML over HTML5 media elements using ng-media!</p>
+        <img src="/assets/img/anigif.gif" title="Wow!" width="200" />
+      </video>
+    </div>
+  </div>
+  <div add-class="slide" ng-show="mode==='code'">
+    <pre class="code">
+      <span style='color:#a65700; '>&lt;</span><span style='color:#5f5035; '>video</span><span style='color:#274796; '> </span><span style='color:#074726; '>data</span><span style='color:#274796; '>-html5-video</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"['http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4',</span>
+      <span style='color:#0000e6; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;'http://clips.vorwaerts-gmbh.de/big_buck_bunny.webm',</span>
+      <span style='color:#0000e6; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;'http://clips.vorwaerts-gmbh.de/big_buck_bunny.ogv']"</span><span style='color:#274796; '></span>
+      <span style='color:#274796; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#074726; '>data</span><span style='color:#274796; '>-track</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"{</span>
+      <span style='color:#0000e6; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;src: 'assets/captions/bunny-en.vtt',</span>
+      <span style='color:#0000e6; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;type: 'text/vtt',</span>
+      <span style='color:#0000e6; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;kind: 'subtitles',</span>
+      <span style='color:#0000e6; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;srclang: 'en-US',</span>
+      <span style='color:#0000e6; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;label: 'Subtitles'</span>
+      <span style='color:#0000e6; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;}"</span><span style='color:#274796; '></span>
+      <span style='color:#274796; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#074726; '>data</span><span style='color:#274796; '>-</span><span style='color:#074726; '>controls</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"true"</span><span style='color:#274796; '></span>
+      <span style='color:#274796; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#074726; '>data</span><span style='color:#274796; '>-</span><span style='color:#074726; '>width</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"640"</span><span style='color:#274796; '></span>
+      <span style='color:#274796; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#074726; '>data</span><span style='color:#274796; '>-</span><span style='color:#074726; '>height</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"360"</span><span style='color:#a65700; '>></span>
+
+        <span style='color:#696969; '>&lt;!-- Overlay code --></span>
+        <span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>p</span><span style='color:#274796; '> </span><span style='color:#074726; '>class</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"shadow"</span><span style='color:#a65700; '>></span>
+        &#xa0;&#xa0;It's super easy to overlay HTML over HTML5 media widgest using ng-media!
+        <span style='color:#a65700; '>&lt;/</span><span style='color:#800000; font-weight:bold; '>p</span><span style='color:#a65700; '>></span>
+        <span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>img</span><span style='color:#274796; '> </span><span style='color:#074726; '>src</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"/assets/img/anigif.gif"</span><span style='color:#274796; '> </span><span style='color:#074726; '>title</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"Wow!"</span><span style='color:#274796; '> </span><span style='color:#074726; '>width</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"200"</span><span style='color:#274796; '> </span><span style='color:#a65700; '>/></span>
+      <span style='color:#a65700; '>&lt;/</span><span style='color:#5f5035; '>video</span><span style='color:#a65700; '>></span>
+    </pre>
+  </div>
+  <div add-class="slide" ng-show="mode==='info'">
+    <p>While this example showcases a simple inline overlay, it is also possible to overlay a template URL using the `overlay-url` attribute.</p>
+
+    <p>This could be useful for different things, like adding "remixing" controls similar to the <a href="https://webmaker.org" title="webmaker">WebMaker</a>
+      project, or providing an authentication form, or even just a basic watermark for your webapp.</p>
+
+    <p>You might have lots of different uses for it, and it's easy to accomplish</p>
+  </div>
+</div>

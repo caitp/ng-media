@@ -13,8 +13,13 @@ module.exports = function(grunt) {
           dest: 'build/js'
         }, {
           expand: true,
-          cwd: 'bower_components/angular-ui-router/release',
-          src: ['angular-ui-router.js'],
+          cwd: 'bower_components/angular-animate',
+          src: 'angular-animate.js',
+          dest: 'build/js'
+        }, {
+          expand: true,
+          cwd: 'bower_components/angular-route',
+          src: ['angular-route.js'],
           dest: 'build/js'
         }, {
           expand: true,
@@ -35,7 +40,7 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: 'example',
-          src: ['css/*.css'],
+          src: ['assets/css/*.css'],
           dest: 'build'
         }]
       },
@@ -43,7 +48,15 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: 'example',
-          src: ['img/**/*'],
+          src: ['assets/img/**/*'],
+          dest: 'build'
+        }]
+      },
+      example_assets: {
+        files: [{
+          expand: true,
+          cwd: 'example',
+          src: ['assets/**/*', '!example/assets/img/**/*', '!example/assets/css/**/*'],
           dest: 'build'
         }]
       }
@@ -168,7 +181,7 @@ module.exports = function(grunt) {
         }
       },
       example_css: {
-        files: ['example/**/*.css'],
+        files: ['example/assets/**/*.css'],
         tasks: ['bower_copy:example_css'],
         options: {
           livereload: true
@@ -182,8 +195,15 @@ module.exports = function(grunt) {
         }
       },
       example_img: {
-        files: ['example/img/**/*'],
+        files: ['example/assets/img/**/*'],
         tasks: ['copy:example_img'],
+        options: {
+          livereload: true
+        }
+      },
+      example_assets: {
+        files: ['example/assets/**/*', '!example/assets/img/**/*', '!example/assets/css/**/*'],
+        tasks: ['copy:example_assets'],
         options: {
           livereload: true
         }
