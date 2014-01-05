@@ -18,7 +18,9 @@ var html5VideoController = [
     track: $parse($attr.track || ''),
     width: $parse($attr.width || ''),
     height: $parse($attr.height || ''),
-    poster: $interpolate($attr.poster || '', false)
+    poster: $interpolate($attr.poster || '', false),
+    preload: $parse($attr.preload || ''),
+    autoplay: $parse($attr.autoplay || '')
   };
 
   var _src,
@@ -26,10 +28,16 @@ var html5VideoController = [
       _poster,
       _width,
       _height,
+      _autoplay,
+      _preload,
       changeDetected = 0,
       srcChanging = false,
       srcChanged = false,
       trackChanged = false,
+      dimensionsChanged = false,
+      posterChanged = false,
+      autoplayChanged = false,
+      preloadChanged = false,
       _sources = [],
       _tracks = [];
 
@@ -64,6 +72,8 @@ var html5VideoController = [
         width = exprs.width($scope),
         height = exprs.height($scope),
         poster = exprs.poster($scope),
+        autoplay = !!exprs.autoplay($scope),
+        preload = !!exprs.preload($scope),
         srcSource,
         trackSource;
 
@@ -99,16 +109,31 @@ var html5VideoController = [
     if (width !== _width) {
       ++changeDetected;
       _width = width;
+      dimensionsChanged = true;
     }
 
     if (height !== _height) {
       ++changeDetected;
       _height = height;
+      dimensionsChanged = true;
     }
 
     if (poster !== _poster) {
       ++changeDetected;
       _poster = poster;
+      posterChanged = true;
+    }
+
+    if (autoplay !== _autoplay) {
+      ++changeDetected;
+      _autoplay = !!autoplay;
+      autoplayChanged = true;
+    }
+
+    if (preload !== _preload) {
+      ++changeDetected;
+      _preload = preload;
+      preloadChanged = true;
     }
     return changeDetected;
   };
@@ -179,9 +204,26 @@ var html5VideoController = [
       trackChanged = false;
     }
 
-    video.width = _width;
-    video.height = _height;
-    video.poster = _poster;
+    if (dimensionsChanged) {
+      video.width = _width;
+      video.height = _height;
+      dimensionsChanged = false;
+    }
+
+    if (posterChanged) {
+      video.poster = _poster;
+      posterChanged = false;
+    }
+
+    if (autoplayChanged) {
+      video.autoplay = _autoplay;
+      autoplayChanged = false;
+    }
+
+    if (preloadChanged) {
+      video.preload = _preload;
+      preloadChanged = false;
+    }
   };
 
   $scope.$watch($videoWatcher, $videoUpdate);
@@ -243,7 +285,6 @@ function($controller, $interpolate, $compile, $http, $templateCache) {
         var video = document.createElement('video');
         var attrOverlay;
         var $overlay = angular.element('<div class="html5-video-overlay"></div>');
-        $element.append(video);
         if (overlayUrl) {
           $http.get($interpolate(overlayUrl, false)($scope), { cache: $templateCache })
             .success(function(tpl) {
@@ -263,7 +304,7 @@ function($controller, $interpolate, $compile, $http, $templateCache) {
           video: video,
           overlay: $overlay[0]
         }));
-
+        $element.append(video);
         if (!attrOverlay) {
           $element.append($overlay);
           $transclude($scope, function(dom) {
