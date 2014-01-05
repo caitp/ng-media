@@ -270,7 +270,7 @@ function($controller, $interpolate, $compile, $http, $templateCache) {
             $overlay.append(dom);
           });
         }
-      }
+      };
     }
   };
 }];
