@@ -1,0 +1,324 @@
+.clearfix:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+ 
+.clearfix {
+	display: inline-block;
+}
+ 
+html[xmlns] .clearfix {
+	display: block;
+}
+ 
+* html .clearfix {
+	height: 1%;
+}
+
+body {
+  background-color: #000;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  background: url(../img/bg.jpg) 0 0 no-repeat fixed;
+  background-size: cover;
+  overflow: hidden;
+}
+
+main {
+  position: relative;
+  display:block!important;
+  margin: 0 auto;
+  min-width: 720px;
+  max-width: 1024px;
+}
+
+#main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* iPhone 2G-4S in landscape */
+@media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 480px)
+  and (orientation: landscape) {
+  main {
+    min-width:320px;
+    max-width:480px;
+  }
+}
+
+/* iPhone 2G-4S in portrait */
+@media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 480px)
+  and (orientation: portrait) {
+  main {
+    min-width: 320px;
+    max-width: 480px;
+  }
+}
+
+/* iPhone 5 in landscape */
+@media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 568px)
+  and (orientation: landscape) {
+  main {
+    min-width: 320px;
+    max-width: 568px;
+  }
+}
+
+/* iPhone 5 in portrait */
+@media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 568px)
+  and (orientation: portrait) {
+  main {
+    min-width: 320px;
+    max-width: 568px;
+  }
+}
+
+/* iPad Portrait */
+@media only screen
+  and (min-device-width: 768px)
+  and (max-device-width: 1024px)
+  and (orientation: portrait) {
+  main {
+    min-width: 768px;
+    max-width: 1024px;
+  }
+}
+
+/* iPad Landscape */
+@media only screen
+  and (min-device-width: 768px)
+  and (max-device-width: 1024px)
+  and (orientation: landscape) {
+  main {
+    min-width: 768px;
+    max-width: 1024px;
+  }
+}
+
+/* Desktop */
+@media only screen
+  and (min-width: 768px) {
+  main {
+    min-width: 768px;
+    max-width: 768px;
+  }
+  #main {
+    float: left;
+    min-height: 1px;
+    min-width: 752px;
+    max-width: 752px;
+  }
+
+  .nav-scroller {
+    margin-top: 5em;
+    min-width: 16px;
+    max-width: 16px;
+    float: right;
+  }
+}
+
+.nav-scroller-item {
+  position: relative;
+}
+
+.nav-scroller-item a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.nav-scroller-item.active a:before, .nav-scroller-item.active a:hover:before {
+  color: #3AA6D0;
+}
+
+.nav-scroller-item a:before {
+  display: inline-block;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-stroke-width: 5.3px;
+  -webkit-stroke-color: #FFFFFF;
+  -webkit-fill-color: #FFFFFF;
+  text-shadow: 1px 0px 20px yellow;
+  content: "\f10c";
+}
+.nav-scroller-item.active a:before {
+  content: "\f111";
+}
+
+.nav-scroller-item > p {
+  display: none;
+}
+
+.nav-scroller-item:hover > p {
+  display: block;
+  position: absolute;
+  top: -20px;
+  left: -200px;
+  background-color: #fff;
+  color: #000;
+  min-width: 180px;
+  max-width: 180px;
+  padding: .5em;
+  border-radius: 4px;
+  -webkit-box-shadow: 0px 3px 3px 3px #222;
+  -moz-box-shadow: 0px 3px 3px 3px #222;
+  -o-box-shadow: 0px 3px 3px 3px #222;
+  box-shadow: 0px 3px 3px 3px #222;
+}
+
+.nav-switcher {
+  display: inline-block;
+  border-radius: 4px;
+  padding: 0;
+  -webkit-box-shadow: 0px 3px 3px 3px #222;
+  -moz-box-shadow: 0px 3px 3px 3px #222;
+  -ms-box-shadow: 0px 3px 3px 3px #222;
+  -o-box-shadow: 0px 3px 3px 3px #222;
+  box-shadow: 0px 3px 3px 3px #222;
+}
+
+.nav-switcher-item {
+  display: inline-block;
+  background-color: none;
+  list-style-type: none;
+  padding: .5em;
+  border-right: 1px solid rgba(255, 255, 255, .5);
+}
+
+.nav-switcher-item:first-child {
+  border-radius: 4px 0 0 4px;
+}
+.nav-switcher-item:last-child {
+  border-radius: 0 4px 4px 0;
+  border-right: none;
+}
+
+.nav-switcher-item:hover {
+  cursor: pointer;
+}
+
+.nav-switcher-item.active {
+  background-color: #fff;
+  color: #3AA6D0;
+}
+
+.nav-switcher-item.active:hover {
+  cursor: default;
+}
+
+.html5-video-wrapper {
+  text-align: center;
+}
+
+pre.code {
+  background-color: #fff;
+  opacity: .5;
+  padding: 1em;
+  border-radius: 4px;
+  color: #000;
+}
+
+.slide-wrapper {
+  position: relative;
+}
+
+.slide-down.ng-enter, .slide-down.ng-leave {
+  -webkit-transition: all ease-out 566ms;
+  -moz-transition: all ease-out 566ms;
+  -ms-transition: all ease-out 566ms;
+  -o-transition: all ease-out 566ms;
+  transition: all ease-out 566ms;
+}
+
+.slide-up.ng-leave-active,
+.slide-down.ng-enter {
+  -webkit-transform: translateY(-999px);
+  -moz-transform: translateY(-999px);
+  -ms-transform: translateY(-999px);
+  -o-transform: translateY(-999px);
+  transform: translateY(-999px);
+}
+
+
+.slide-up.ng-enter-active, .slide-up.ng-leave,
+.slide-down.ng-enter-active, .slide-down.ng-leave {
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  -o-transform: translateY(0);
+  transform: translateY(0);
+}
+
+.slide-up.ng-enter,
+.slide-down.ng-leave-active {
+  -webkit-transform: translateY(999px);
+  -moz-transform: translateY(999px);
+  -ms-transform: translateY(999px);
+  -o-transform: translateY(999px);
+  transform: translateY(999px);
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.slide.ng-animate {
+  display:block!important;
+  -webkit-transition: all ease-out 566ms;
+  -moz-transition: all ease-out 566ms;
+  -ms-transition: all ease-out 566ms;
+  -o-transition: all ease-out 566ms;
+  transition: all ease-out 566ms;
+}
+
+.slide.ng-hide-add-active {
+  -webkit-transform: translateX(-999px);
+  -moz-transform: translateX(-999px);
+  -ms-transform: translateX(-999px);
+  -o-transform: translateX(-999px);
+  transform: translateX(-999px);
+}
+
+.slide.ng-hide-remove {
+  -webkit-transform: translateX(9999px);
+  -moz-transform: translateX(9999px);
+  -ms-transform: translateX(9999px);
+  -o-transform: translateX(9999px);
+  transform: translateX(9999px);
+}
+
+.slide.ng-hide-remove-active {
+  -webkit-transform: translateX(0);
+  -moz-transform: translateX(0);
+  -ms-transform: translateX(0);
+  -o-transform: translateX(0);
+  transform: translateX(0);
+}
+
+.shadow {
+  -webkit-text-shadow: 3px 3px 0 #0;
+  -moz-text-shadow: 3px 3px 0 #0;
+  -o-text-shadow: 3px 3px 0 #0;
+  -ms-text-shadow: 3px 3px 0 #0;
+  text-shadow: 3px 3px 0 #0;
+}
