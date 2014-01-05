@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app="media.example">
+  <head>
+    <title>ng-media</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/ng-media.example.css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  </head>
+  <body>
+    <a href="https://github.com/caitp/ng-media">
+      <img style="position: absolute; top: 0; right: 0; border: 0;"
+           src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"
+           alt="Fork me on GitHub"></a>
+    <main class="clearfix">
+      <section class="slide-down" ng-view id="main">
+      </section>
+      <section data-nav-scroller="navoptions">
+      </section>
+    </main>
+
+    <script src="js/angular.js"></script>
+    <script src="js/angular-animate.js"></script>
+    <script src="js/angular-route.js"></script>
+    <script src="ng-media.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>

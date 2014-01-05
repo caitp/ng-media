@@ -1,0 +1,59 @@
+<h2>html5-video</h2>
+
+<p>The html5-video directive enables the creation of data-bound videos, with support for
+  overlaid HTML and custom controls.</p>
+
+<p>The following example shows a simple, inline utilization of the directive without any
+  scope-bound expressions.</p>
+
+<div data-switcher="example|code|info" ng-model="mode"></div>
+<div class="slide-wrapper">
+  <div add-class="slide" ng-show="mode==='example'">
+    <div class="html5-video-wrapper">
+      <video data-html5-video="['http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4',
+                                'http://clips.vorwaerts-gmbh.de/big_buck_bunny.webm',
+                                'http://clips.vorwaerts-gmbh.de/big_buck_bunny.ogv']"
+             data-track="{
+               src: 'assets/captions/bunny-en.vtt',
+               type: 'text/vtt',
+               kind: 'subtitles',
+               srclang: 'en-US',
+               label: 'Subtitles'
+             }"
+             data-controls="true"
+             data-width="640"
+             data-height="360">
+      </video>
+    </div>
+  </div>
+  <div add-class="slide" ng-show="mode==='code'">
+    <pre class="code">
+      <span style='color:#a65700; '>&lt;</span><span style='color:#5f5035; '>video</span><span style='color:#274796; '> </span><span style='color:#074726; '>data</span><span style='color:#274796; '>-html5-video</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"['http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4',</span>
+      <span style='color:#0000e6; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;'http://clips.vorwaerts-gmbh.de/big_buck_bunny.webm',</span>
+      <span style='color:#0000e6; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;'http://clips.vorwaerts-gmbh.de/big_buck_bunny.ogv']"</span><span style='color:#274796; '></span>
+      <span style='color:#274796; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#074726; '>data</span><span style='color:#274796; '>-tracks</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"{</span>
+      <span style='color:#0000e6; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;src: 'captions/bunny-en.vtt',</span>
+      <span style='color:#0000e6; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;type: 'text/vtt',</span>
+      <span style='color:#0000e6; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;kind: 'subtitles',</span>
+      <span style='color:#0000e6; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;srclang: 'en-US'</span>
+      <span style='color:#0000e6; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;}"</span><span style='color:#274796; '></span>
+      <span style='color:#274796; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#074726; '>data</span><span style='color:#274796; '>-preload</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"true"</span><span style='color:#274796; '></span>
+      <span style='color:#274796; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#074726; '>data</span><span style='color:#274796; '>-autoplay</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"true"</span><span style='color:#274796; '></span>
+      <span style='color:#274796; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#074726; '>data</span><span style='color:#274796; '>-</span><span style='color:#074726; '>controls</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"true"</span><span style='color:#a65700; '>></span>
+      <span style='color:#a65700; '>&lt;/</span><span style='color:#5f5035; '>video</span><span style='color:#a65700; '>></span>    </pre>
+  </div>
+  <div add-class="slide" ng-show="mode==='info'">
+    <p>The video sources and text tracks may be specified using both the `src` attribute,
+      and the `html5-video` attribute (including variations on the attribute names based on
+      the AngularJS Directive normalization rules).</p>
+
+    <p>Additionally, it is possible to specify sources/tracks in a number of ways:</p>
+    <ul>
+      <li>String literals (`data-html5-video="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"`)
+      <li>Interpolated strings (`data-track="./assets/captions/{{video}}-{{locale}}.vtt"`) (Warning:
+        AngularJS will not allow complex interpolation expressions for the attributes `href` and `src`)
+      <li>Variables in $scope (`data-src="videos[$index]"`)
+    </ul>
+    <p>Many other attributes are also supported. API reference coming soon!</p>
+  </div>
+</div>
