@@ -20,7 +20,7 @@ var html5VideoController = [
     height: $parse($attr.height || ''),
     poster: $interpolate($attr.poster || '', false),
     preload: $parse($attr.preload || ''),
-    autoplay: $parse($attr.autoplay || '')
+    autoplay: $interpolate($attr.autoplay || '', false)
   };
 
   var _src,
@@ -73,7 +73,7 @@ var html5VideoController = [
         height = exprs.height($scope),
         poster = exprs.poster($scope),
         autoplay = !!exprs.autoplay($scope),
-        preload = !!exprs.preload($scope),
+        preload = exprs.preload($scope),
         srcSource,
         trackSource;
 
