@@ -1,4 +1,4 @@
-##ng-media
+##ng-media [![devDependency Status](https://david-dm.org/caitp/ng-media/dev-status.png?branch=master)](https://david-dm.org/caitp/ng-media#info=devDependencies)
 
 ###[AngularJS](http://angularjs.org/) support for HTML5 media elements
 
