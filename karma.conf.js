@@ -17,6 +17,8 @@ module.exports = function(config) {
       'test/**/*.spec.js'
     ],
 
+    reporters: ['dots'],
+
     junitReporter: {
       outputFile: 'test_out/jqlite.xml',
       suite: 'jqLite'
