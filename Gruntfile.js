@@ -232,8 +232,9 @@ module.exports = function(grunt) {
   grunt.loadTasks('lib/grunt');
 
   grunt.renameTask('gh-pages', 'ghPages');
-  grunt.registerTask('default', ['jshint', 'build']);
+  grunt.registerTask('default', ['bower', 'jshint', 'build', 'test']);
   grunt.registerTask('example', 'Build example files', ['build', 'bower_copy', 'concat']);
   grunt.registerTask('gh-pages', 'Push gh-pages site', ['example', 'ghPages']);
   grunt.registerTask('server', 'Run development server', ['example', 'parallel:server']);
+  grunt.registerTask('test', 'Run tests', ['bower', 'karma:continuous']);
 };
