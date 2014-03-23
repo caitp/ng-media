@@ -1,4 +1,4 @@
-##ng-media [![Build Status](https://travis-ci.org/caitp/ng-media.svg?branch=master)](https://travis-ci.org/caitp/ng-media) [![devDependency Status](https://david-dm.org/caitp/ng-media/dev-status.png?branch=master)](https://david-dm.org/caitp/ng-media#info=devDependencies)
+##ng-media [![Build Status](https://travis-ci.org/caitp/ng-media.svg?branch=master)](https://travis-ci.org/caitp/ng-media) [![devDependency Status](https://david-dm.org/caitp/ng-media/dev-status.svg?branch=master)](https://david-dm.org/caitp/ng-media#info=devDependencies)
 
 ###[AngularJS](http://angularjs.org/) support for HTML5 media elements
 
