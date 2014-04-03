@@ -17,11 +17,24 @@ module.exports = function(config) {
       'test/**/*.spec.js'
     ],
 
-    reporters: ['dots'],
+    reporters: ['dots', 'coverage'],
+
+    preprocessors: {
+      'src/**/*.js': ['coverage']
+    },
 
     junitReporter: {
       outputFile: 'test_out/jqlite.xml',
       suite: 'jqLite'
+    },
+
+    coverageReporter: {
+      reporters: [{
+        type: 'lcov',
+        dir: 'coverage/'
+      }, {
+        type: 'text'
+      }]
     }
   });
 };
