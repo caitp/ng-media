@@ -1,4 +1,4 @@
-##ng-media [![Build Status](https://travis-ci.org/caitp/ng-media.svg?branch=master)](https://travis-ci.org/caitp/ng-media) [![devDependency Status](https://david-dm.org/caitp/ng-media/dev-status.svg?branch=master)](https://david-dm.org/caitp/ng-media#info=devDependencies) [![Coverage Status](http://img.shields.io/coveralls/caitp/ng-media/master.svg)](https://coveralls.io/r/caitp/ng-media)
+##ng-media [![Build Status](https://travis-ci.org/caitp/ng-media.svg?branch=master)](https://travis-ci.org/caitp/ng-media) [![devDependency Status](https://david-dm.org/caitp/ng-media/dev-status.svg?theme=shields.io)](https://david-dm.org/caitp/ng-media#info=devDependencies) [![Coverage Status](http://img.shields.io/coveralls/caitp/ng-media/master.svg)](https://coveralls.io/r/caitp/ng-media)
 
 ###[AngularJS](http://angularjs.org/) support for HTML5 media elements
 
