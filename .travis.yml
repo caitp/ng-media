@@ -4,12 +4,15 @@ node_js:
 
 env:
   global:
-    secure: HJmJFfI3+phyTwd4qBMgSaNei9XMCuH81lrNHC3jmWISsZF47Cgn5R0Yuei83BiXkPX8GBoWZloujepGS49A5n3CO4h4XZm+JDzFyScuF66I/RMj4Fi0OZr0hc4AbHq+U8+xs7kA0dyEbvBzB5S65NGqMTNNfVYBGf3rEJrjNqg=
+    - secure: "HJmJFfI3+phyTwd4qBMgSaNei9XMCuH81lrNHC3jmWISsZF47Cgn5R0Yuei83BiXkPX8GBoWZloujepGS49A5n3CO4h4XZm+JDzFyScuF66I/RMj4Fi0OZr0hc4AbHq+U8+xs7kA0dyEbvBzB5S65NGqMTNNfVYBGf3rEJrjNqg="
+    - secure: "iT05KE/GW6tM3lqFKlF38ATL+G37iqmcw5KyLCwcj6TMcFljWbeRypKiK0kF/B9h8O01vQMMaNnxOyfG/sX01vieJht/MWS/15l0o+ZBBfR0M4Sz08NqtJCHIrViaMoteeXalDjVtokLV+mvVMYVSv3ojYVmgPJRdSFNCMZ1piU="
+    - secure: "Snq8RYHWXcaxXCDIx3kX8h8RDb3pyDK6DAzr0Hn4oW5qVE4OAr1ZSBPUarfjH9CAw+nDjVRuWbnLBvdecbcnWd4c8MmSl84XxF6hTV8IshqZOTl99OT+9TSUkf0H1sDDFJwDsLrmOY0APbjrTG9Jyy40YmA/GZCwZ+f8MKa5gOo="
 
 before_script:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
-  - npm install --silent -g grunt-cli
+  - npm install --silent -g grunt-cli karma-cli
   - npm install --dev --silent
+  - npm install karma-sauce-launcher
 
-script: grunt
+script: ./lib/travis/build.sh
