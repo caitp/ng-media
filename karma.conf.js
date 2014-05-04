@@ -35,11 +35,45 @@ module.exports = function(config) {
       }, {
         type: 'text'
       }]
-    }
+    },
+
+    sauceLabs: {
+      testName: 'ngMedia',
+      startConnect: true,
+      options: {
+        'selenium-version': '2.37.0'
+      }
+    },
+
+
+    customLaunchers: {
+      // Sauce Labs browsers
+      'SL_Chrome': {
+        base: 'SauceLabs',
+        browserName: 'chrome'
+      },
+      'SL_Firefox': {
+        base: 'SauceLabs',
+        browserName: 'firefox',
+        version: '26'
+      },
+      'SL_Safari': {
+        base: 'SauceLabs',
+        browserName: 'safari',
+        platform: 'OS X 10.9',
+        version: '7'
+      }
+    },
   });
 
   if (process.env.TRAVIS) {
     config.reporters.push('coveralls');
+    config.sauceLabs.build = 'TRAVIS #' + process.env.TRAVIS_BUILD_NUMBER + ' (' + process.env.TRAVIS_BUILD_ID + ')';
+    config.sauceLabs.tunnelIdentifier = process.env.TRAVIS_JOB_NUMBER;
+
+    // TODO(caitp): remove once SauceLabs supports websockets.
+    // This speeds up the capturing a bit, as browsers don't even try to use websocket.
+    config.transports = ['xhr-polling'];
   }
 
   function arrayRemove(array, item) {
