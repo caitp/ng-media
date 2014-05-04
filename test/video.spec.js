@@ -82,6 +82,224 @@ describe('html5Video', function() {
       controls.triggerHandler('click');
       expect(controller.$play).toHaveBeenCalled();
     }));
+
+
+    it('should play video when video.$play() called', inject(function($compile, $rootScope, $httpBackend, $document) {
+      $httpBackend.expectGET('ctrl.tpl').respond('<div id="controls" style="width: 100px; height: 100px;" ng-click="video.$play()"></div>');
+      element = $compile('<div data-html5-video="test.vp8" controls="true" controls-url="ctrl.tpl"></div>')($rootScope, function(dom) {
+        $document.find('body').prepend(dom);
+      });
+      $httpBackend.flush();
+      $rootScope.$digest();
+
+      var video = element.find('video')[0];
+      spyOn(video, 'play');
+
+      var controls = angular.element(document.getElementById('controls'));
+      controls.triggerHandler('click');
+
+      expect(video.play).toHaveBeenCalled();
+    }));
+
+
+    it('should load video when video.$play() called with new source', inject(function($compile, $rootScope, $httpBackend, $document) {
+      $httpBackend.expectGET('ctrl.tpl').respond('<div id="controls" style="width: 100px; height: 100px;" ng-click="video.$play()"></div>');
+      element = $compile('<div data-html5-video src="source" controls="true" controls-url="ctrl.tpl"></div>')($rootScope, function(dom) {
+        $document.find('body').prepend(dom);
+      });
+      $httpBackend.flush();
+      $rootScope.$digest();
+
+      var video = element.find('video')[0];
+      spyOn(video, 'load');
+
+      $rootScope.source = "test.vp8";
+      $rootScope.$digest();
+
+      var controls = angular.element(document.getElementById('controls'));
+      controls.triggerHandler('click');
+
+      expect(video.load).toHaveBeenCalled();
+    }));
+
+
+    it('should pause video when video.$pause() called', inject(function($compile, $rootScope, $httpBackend, $document) {
+      $httpBackend.expectGET('ctrl.tpl').respond('<div id="controls" style="width: 100px; height: 100px;" ng-click="video.$pause()"></div>');
+      element = $compile('<div data-html5-video src="test.vp8" controls="true" controls-url="ctrl.tpl"></div>')($rootScope, function(dom) {
+        $document.find('body').prepend(dom);
+      });
+      $httpBackend.flush();
+      $rootScope.$digest();
+
+      var video = element.find('video')[0];
+      video.play();
+      spyOn(video, 'pause');
+
+      var controls = angular.element(document.getElementById('controls'));
+      controls.triggerHandler('click');
+
+      expect(video.pause).toHaveBeenCalled();
+    }));
+
+
+    it('should report playback status when video.$paused() called', inject(function($compile, $rootScope, $httpBackend, $document) {
+      $httpBackend.expectGET('ctrl.tpl').respond('<div id="controls" style="width: 100px; height: 100px;" ng-click="video.$pause()"></div>');
+      element = $compile('<div data-html5-video src="test.vp8" controls="true" controls-url="ctrl.tpl"></div>')($rootScope, function(dom) {
+        $document.find('body').prepend(dom);
+      });
+      $httpBackend.flush();
+      $rootScope.$digest();
+
+      var video = element.find('video')[0];
+      var controls = angular.element(document.getElementById('controls'));
+      var videoCtrl = controls.scope().video;
+
+      expect(videoCtrl.$paused()).toBe(true);
+      video.play();
+
+      expect(videoCtrl.$paused()).toBe(false);
+
+      controls.triggerHandler('click');
+      expect(videoCtrl.$paused()).toBe(true);
+    }));
+
+
+    it('should report playback rate when video.$playbackRate() called with no arguments', inject(function($compile, $rootScope, $httpBackend, $document) {
+      $httpBackend.expectGET('ctrl.tpl').respond('<div id="controls" style="width: 100px; height: 100px;"></div>');
+      element = $compile('<div data-html5-video src="test.vp8" controls="true" controls-url="ctrl.tpl"></div>')($rootScope, function(dom) {
+        $document.find('body').prepend(dom);
+      });
+      $httpBackend.flush();
+      $rootScope.$digest();
+
+      var video = element.find('video')[0];
+      var controls = angular.element(document.getElementById('controls'));
+      var videoCtrl = controls.scope().video;
+
+      video.play();
+
+      expect(videoCtrl.$playbackRate()).toBe(1);
+    }));
+
+
+    it('should set playback rate when video.$playbackRate() called with value', inject(function($compile, $rootScope, $httpBackend, $document) {
+      $httpBackend.expectGET('ctrl.tpl').respond('<div id="controls" style="width: 100px; height: 100px;"></div>');
+      element = $compile('<div data-html5-video src="test.vp8" controls="true" controls-url="ctrl.tpl"></div>')($rootScope, function(dom) {
+        $document.find('body').prepend(dom);
+      });
+      $httpBackend.flush();
+      $rootScope.$digest();
+
+      var video = element.find('video')[0];
+      var controls = angular.element(document.getElementById('controls'));
+      var videoCtrl = controls.scope().video;
+
+      video.play();
+      videoCtrl.$playbackRate(0.5);
+      
+      expect(videoCtrl.$playbackRate()).toBe(0.5);
+    }));
+
+
+    it('should report playback volume when video.$volume() called with no arguments', inject(function($compile, $rootScope, $httpBackend, $document) {
+      $httpBackend.expectGET('ctrl.tpl').respond('<div id="controls" style="width: 100px; height: 100px;"></div>');
+      element = $compile('<div data-html5-video src="test.vp8" controls="true" controls-url="ctrl.tpl"></div>')($rootScope, function(dom) {
+        $document.find('body').prepend(dom);
+      });
+      $httpBackend.flush();
+      $rootScope.$digest();
+
+      var video = element.find('video')[0];
+      var controls = angular.element(document.getElementById('controls'));
+      var videoCtrl = controls.scope().video;
+
+      video.play();
+
+      expect(videoCtrl.$volume()).toBe(1);
+    }));
+
+
+    it('should set playback volume when video.$volume() called with value', inject(function($compile, $rootScope, $httpBackend, $document) {
+      $httpBackend.expectGET('ctrl.tpl').respond('<div id="controls" style="width: 100px; height: 100px;"></div>');
+      element = $compile('<div data-html5-video src="test.vp8" controls="true" controls-url="ctrl.tpl"></div>')($rootScope, function(dom) {
+        $document.find('body').prepend(dom);
+      });
+      $httpBackend.flush();
+      $rootScope.$digest();
+
+      var video = element.find('video')[0];
+      var controls = angular.element(document.getElementById('controls'));
+      var videoCtrl = controls.scope().video;
+
+      video.play();
+      videoCtrl.$volume(0.5);
+      
+      expect(videoCtrl.$volume()).toBe(0.5);
+    }));
+
+
+    it('should report muted status when video.$mute() called with no arguments', inject(function($compile, $rootScope, $httpBackend, $document) {
+      $httpBackend.expectGET('ctrl.tpl').respond('<div id="controls" style="width: 100px; height: 100px;"></div>');
+      element = $compile('<div data-html5-video src="test.vp8" controls="true" controls-url="ctrl.tpl"></div>')($rootScope, function(dom) {
+        $document.find('body').prepend(dom);
+      });
+      $httpBackend.flush();
+      $rootScope.$digest();
+
+      var video = element.find('video')[0];
+      var controls = angular.element(document.getElementById('controls'));
+      var videoCtrl = controls.scope().video;
+
+      video.play();
+
+      expect(videoCtrl.$mute()).toBe(false);
+    }));
+
+
+    it('should mute volume when video.$mute() called with truthy value', inject(function($compile, $rootScope, $httpBackend, $document) {
+      $httpBackend.expectGET('ctrl.tpl').respond('<div id="controls" style="width: 100px; height: 100px;"></div>');
+      element = $compile('<div data-html5-video src="test.vp8" controls="true" controls-url="ctrl.tpl"></div>')($rootScope, function(dom) {
+        $document.find('body').prepend(dom);
+      });
+      $httpBackend.flush();
+      $rootScope.$digest();
+
+      var video = element.find('video')[0];
+      var controls = angular.element(document.getElementById('controls'));
+      var videoCtrl = controls.scope().video;
+
+      video.play();
+      videoCtrl.$mute({});
+      expect(videoCtrl.$mute()).toBe(true);
+      videoCtrl.$mute(true);
+      expect(videoCtrl.$mute()).toBe(true);
+      videoCtrl.$mute("0");
+      expect(videoCtrl.$mute()).toBe(true);
+    }));
+
+
+    it('should unmute volume when video.$mute() called with falsy value', inject(function($compile, $rootScope, $httpBackend, $document) {
+      $httpBackend.expectGET('ctrl.tpl').respond('<div id="controls" style="width: 100px; height: 100px;"></div>');
+      element = $compile('<div data-html5-video src="test.vp8" controls="true" controls-url="ctrl.tpl"></div>')($rootScope, function(dom) {
+        $document.find('body').prepend(dom);
+      });
+      $httpBackend.flush();
+      $rootScope.$digest();
+
+      var video = element.find('video')[0];
+      var controls = angular.element(document.getElementById('controls'));
+      var videoCtrl = controls.scope().video;
+
+      video.play();
+      videoCtrl.$mute(false);
+      expect(videoCtrl.$mute()).toBe(false);
+      videoCtrl.$mute(null);
+      expect(videoCtrl.$mute()).toBe(false);
+      videoCtrl.$mute("");
+      expect(videoCtrl.$mute()).toBe(false);
+      videoCtrl.$mute(undefined);
+      expect(videoCtrl.$mute()).toBe(false);
+    }));
   });
 
 
@@ -160,6 +378,14 @@ describe('html5Video', function() {
       $rootScope.$apply(function() { $rootScope.source = 'test2.vp8'; });
       expect(element.find('source').length).toEqual(1);
       expect(element.find('source').prop('src')).toMatch(/test2\.vp8$/);
+    }));
+
+
+    it('should remove falsy sources from sources', inject(function($compile, $rootScope) {
+      $rootScope.sources = ['', null, false, undefined];
+      element = $compile('<div data-html5-video src="sources"></div>')($rootScope);
+      $rootScope.$digest();
+      expect(element.find('source').length).toBe(0);
     }));
   });
 
@@ -242,6 +468,14 @@ describe('html5Video', function() {
     }));
 
 
+    it('should remove falsy sources from tracks', inject(function($compile, $rootScope) {
+      $rootScope.tracks = ['', null, false, undefined];
+      element = $compile('<div data-html5-video src="test.vp8" track="tracks"></div>')($rootScope);
+      $rootScope.$digest();
+      expect(element.find('track').length).toBe(0);
+    }));
+
+
     describe('overlayUrl', function() {
       it('should replace inline overlay with template', inject(function($compile, $rootScope, $templateCache) {
         $templateCache.put('overlay.html', '<p>This is overlay from template</p>');
@@ -252,5 +486,42 @@ describe('html5Video', function() {
         expect(element.find('p').text()).toBe('This is overlay from template');
       }));
     });
+  });
+
+
+  describe('preload', function() {
+    it('should be databound', inject(function($compile, $rootScope) {
+      element = $compile('<div data-html5-video preload="$preload"></div>')($rootScope);
+      $rootScope.$preload = 'metadata';
+      $rootScope.$digest();
+      var video = element.find('video')[0];
+
+      expect(video.preload).toBe('metadata');
+
+      $rootScope.$preload = 'none';
+      $rootScope.$digest();
+
+      expect(video.preload).toBe('none');
+    }));
+
+
+    it('should treat `false` as `none`', inject(function($compile, $rootScope) {
+      element = $compile('<div data-html5-video preload="$preload"></div>')($rootScope);
+      $rootScope.$preload = false;
+      $rootScope.$digest();
+      var video = element.find('video')[0];
+
+      expect(video.preload).toBe('none');
+    }));
+
+
+    it('should treat `true` as `auto`', inject(function($compile, $rootScope) {
+      element = $compile('<div data-html5-video preload="$preload"></div>')($rootScope);
+      $rootScope.$preload = true;
+      $rootScope.$digest();
+      var video = element.find('video')[0];
+
+      expect(video.preload).toBe('auto');
+    }));
   });
 });
