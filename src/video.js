@@ -84,6 +84,12 @@ var html5VideoController = [
       src = $interpolate(srcSource, false)($scope);
     }
 
+    if (preload === false) {
+      preload = 'none';
+    } else if (preload === true) {
+      preload = 'auto';
+    }
+
     try {
       trackSource = $attr.track || '';
       track = $scope.$eval(trackSource);
@@ -145,7 +151,7 @@ var html5VideoController = [
     var last = video.firstChild;
     angular.forEach(sources, function(_src, i) {
       var source = document.createElement('source'), src = _src;
-      if (typeof _src === 'object') {
+      if (typeof _src === 'object' && _src) {
         source.type = _src.type;
         source.media = _src.media;
         src = _src.src;
@@ -165,10 +171,10 @@ var html5VideoController = [
     angular.forEach(_tracks, function(track, i) {
       (track.parentNode || track.parentElement).removeChild(track);      
     });
-    _tracks = [];
+    _tracks.length = 0;
     angular.forEach(tracks, function(_src, i) {
       var track = document.createElement('track'), src = _src;
-      if (typeof _src === 'object') {
+      if (typeof _src === 'object' && _src) {
         track.kind = _src.kind || 'subtitles';
         track.charset = _src.charset;
         track.srclang = _src.srclang;
@@ -181,7 +187,6 @@ var html5VideoController = [
         track.kind = 'subtitles';
       }
       if (!src) {
-        console.log("no src attribute!");
         track = null;
       } else {
         track.src = src;
@@ -228,9 +233,9 @@ var html5VideoController = [
   $scope.$watch($videoWatcher, $videoUpdate);
 
   this.$play = function() {
-    if (srcChanged) {
+    if (srcChanging) {
       video.load();
-      srcChanged = false;
+      srcChanging = false;
     }
     video.play();
   };
