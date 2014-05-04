@@ -41,4 +41,17 @@ module.exports = function(config) {
   if (process.env.TRAVIS) {
     config.reporters.push('coveralls');
   }
+
+  function arrayRemove(array, item) {
+    var index = array.indexOf(item);
+    if (index >= 0) {
+      array.splice(index, 1);
+    }
+  }
+  if (process.argv.indexOf('--debug') >= 0) {
+    arrayRemove(config.reporters, 'coverage');
+    for (var key in config.preprocessors) {
+      arrayRemove(config.preprocessors[key], 'coverage');
+    }
+  }
 };
