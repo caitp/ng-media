@@ -9,8 +9,6 @@ env:
     - secure: "Snq8RYHWXcaxXCDIx3kX8h8RDb3pyDK6DAzr0Hn4oW5qVE4OAr1ZSBPUarfjH9CAw+nDjVRuWbnLBvdecbcnWd4c8MmSl84XxF6hTV8IshqZOTl99OT+9TSUkf0H1sDDFJwDsLrmOY0APbjrTG9Jyy40YmA/GZCwZ+f8MKa5gOo="
 
 before_script:
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
   - npm install --silent -g grunt-cli karma-cli
   - npm install --dev --silent
   - npm install karma-sauce-launcher
