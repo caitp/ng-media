@@ -41,7 +41,7 @@ module.exports = function(config) {
       testName: 'ngMedia',
       startConnect: true,
       options: {
-        'selenium-version': '2.37.0'
+        'selenium-version': '2.46.0'
       }
     },
 
